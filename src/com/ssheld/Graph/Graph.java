@@ -20,7 +20,7 @@ public class Graph {
     public Graph() {
 
         try {
-            Scanner fin = new Scanner(new File("smallgraph"));
+            Scanner fin = new Scanner(new File("smallCG"));
 
             // Initialize our edge count to zero
             this.E = 0;
@@ -68,7 +68,7 @@ public class Graph {
     }
 
     public void printAdjList() {
-        for (int i = 0; i < E; i++) {
+        for (int i = 0; i < V; i++) {
             System.out.printf("%d: ", i);
             ListIterator listItr = adj[i].listIterator();
             while (listItr.hasNext()) {
