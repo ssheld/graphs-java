@@ -1,4 +1,5 @@
 import com.ssheld.Graph.Graph;
+import com.ssheld.Search.BreadthFirstPaths;
 import com.ssheld.Search.DepthFirstPaths;
 import com.ssheld.Search.DepthFirstSearch;
 
@@ -30,6 +31,7 @@ public class TestSearch {
         do {
             System.out.println("1. Find all vertices connected to a specific vertex");
             System.out.println("2. Print path to each vertex");
+            System.out.println("3. Find the shortest path to each vertex");
             System.out.println("0. Exit the program");
             choice = scan.nextInt();
 
@@ -59,6 +61,22 @@ public class TestSearch {
                         System.out.printf("0 to %d: ", v);
                         // If we do let's iterate through it
                         Stack<Integer> s = dfp.pathTo(v);
+                        System.out.printf("%d", s.pop());
+                        Iterator itr = s.iterator();
+                        while (itr.hasNext()) {
+                            System.out.printf("-%d", s.pop());
+                        }
+                    }
+                    System.out.println();
+                }
+            }
+            else if (choice == 3) {
+                BreadthFirstPaths bfp = new BreadthFirstPaths(g, 0);
+                for (int v = 0; v < g.V(); v++) {
+                    if (bfp.hasPathTo(v)) {
+                        System.out.printf("0 to %d: ", v);
+                        // If we do let's iterate through it
+                        Stack<Integer> s = bfp.pathTo(v);
                         System.out.printf("%d", s.pop());
                         Iterator itr = s.iterator();
                         while (itr.hasNext()) {
