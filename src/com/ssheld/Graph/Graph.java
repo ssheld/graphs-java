@@ -20,7 +20,7 @@ public class Graph {
     public Graph() {
 
         try {
-            Scanner fin = new Scanner(new File("smallCG"));
+            Scanner fin = new Scanner(new File("smallgraph"));
 
             // Initialize our edge count to zero
             this.E = 0;

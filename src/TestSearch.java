@@ -1,11 +1,10 @@
 import com.ssheld.Graph.Graph;
 import com.ssheld.Search.BreadthFirstPaths;
+import com.ssheld.Search.ConnectedComponents;
 import com.ssheld.Search.DepthFirstPaths;
 import com.ssheld.Search.DepthFirstSearch;
 
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Author: Stephen Sheldon 3/24/2019
@@ -32,6 +31,7 @@ public class TestSearch {
             System.out.println("1. Find all vertices connected to a specific vertex");
             System.out.println("2. Print path to each vertex");
             System.out.println("3. Find the shortest path to each vertex");
+            System.out.println("4. Print all members of each connected component");
             System.out.println("0. Exit the program");
             choice = scan.nextInt();
 
@@ -84,6 +84,28 @@ public class TestSearch {
                         }
                     }
                     System.out.println();
+                }
+            }
+            else if (choice == 4) {
+                ConnectedComponents cc = new ConnectedComponents(g);
+
+                int n = cc.count();
+                System.out.println(n + " Components");
+
+                PriorityQueue<Integer>[] components;
+                components = new PriorityQueue[n];
+                for (int i = 0; i < n; i++) {
+                    components[i] = new PriorityQueue<>();
+                }
+                for (int i = 0; i < g.V(); i++) {
+                    components[cc.id(i)].add(i);
+                }
+
+                for (int i = 0; i < n; i++) {
+                    for (int v : components[i]) {
+                        System.out.printf(v + " ");
+                    }
+                    System.out.println("");
                 }
             }
         } while (choice != 0);
