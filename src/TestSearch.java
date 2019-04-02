@@ -1,8 +1,5 @@
 import com.ssheld.Graph.Graph;
-import com.ssheld.Search.BreadthFirstPaths;
-import com.ssheld.Search.ConnectedComponents;
-import com.ssheld.Search.DepthFirstPaths;
-import com.ssheld.Search.DepthFirstSearch;
+import com.ssheld.Search.*;
 
 import java.util.*;
 
@@ -22,7 +19,7 @@ public class TestSearch {
         Graph g = new Graph();
 
         System.out.println("You have the following graph:");
-        g.printAdjList();;
+        g.printAdjList();
 
         Scanner scan = new Scanner(System.in);
 
@@ -32,6 +29,7 @@ public class TestSearch {
             System.out.println("2. Print path to each vertex");
             System.out.println("3. Find the shortest path to each vertex");
             System.out.println("4. Print all members of each connected component");
+            System.out.println("5. Check if the graph is acyclic");
             System.out.println("0. Exit the program");
             choice = scan.nextInt();
 
@@ -106,6 +104,15 @@ public class TestSearch {
                         System.out.printf(v + " ");
                     }
                     System.out.println("");
+                }
+            }
+            else if (choice == 5) {
+                Cycle c = new Cycle(g);
+                if (c.hasCycle()) {
+                    System.out.println("This graph contains cycles.");
+                }
+                else {
+                    System.out.println("This graph contains no cycles.");
                 }
             }
         } while (choice != 0);
