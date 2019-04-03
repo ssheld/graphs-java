@@ -30,6 +30,7 @@ public class TestSearch {
             System.out.println("3. Find the shortest path to each vertex");
             System.out.println("4. Print all members of each connected component");
             System.out.println("5. Check if the graph is acyclic");
+            System.out.println("6. Check if the graph is bipartite (two-colorable)");
             System.out.println("0. Exit the program");
             choice = scan.nextInt();
 
@@ -113,6 +114,15 @@ public class TestSearch {
                 }
                 else {
                     System.out.println("This graph contains no cycles.");
+                }
+            }
+            else if (choice == 6) {
+                Bipartite bipartiteGraph = new Bipartite(g);
+                if (bipartiteGraph.isBipartite()) {
+                    System.out.println("Yes this graph is bipartite! It is two-colorable.");
+                }
+                else {
+                    System.out.println("No this graph is NOT bipartite! It is not two-colorable.");
                 }
             }
         } while (choice != 0);
