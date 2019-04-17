@@ -17,33 +17,15 @@ public class Graph {
     private LinkedList<Integer>[] adj;  // Adjacency list
 
     // Create a V-vertex graph with no edges
-    public Graph() {
+    public Graph(int V) {
+        this.V = V;
+        this.E = 0;
 
-        try {
-            Scanner fin = new Scanner(new File("acyclic"));
+        adj = new LinkedList[V];
 
-            // Initialize our edge count to zero
-            this.E = 0;
-            // Get the number of vertices
-            this.V = Integer.parseInt(fin.nextLine());
-            // Get the number of edges from the file
-            int e = Integer.parseInt(fin.nextLine());
-
-            // Create array of Linked Lists
-            adj = new LinkedList[V];
-            // Initialize all lists to empty
-            for (int i = 0; i < V; i++) {
-                adj[i] = new LinkedList();
-            }
-
-            // Put all edges into our adjacency list
-            for (int i = 0; i < e; i++) {
-                int v = fin.nextInt();
-                int w = fin.nextInt();
-                addEdge(v, w);
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("Sorry could not find/open file smallgraph.txt");
+        // Create LinkedList Objects to represent every vertex in graph
+        for (int i = 0; i < V; i++) {
+            adj[i] = new LinkedList();
         }
     }
 
