@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Graph;
+import com.ssheld.AdjacencyListGraphs.Graph;
 
 import java.util.Stack;
 
@@ -20,9 +20,9 @@ public class DepthFirstPaths {
     private int s;
 
     public DepthFirstPaths(Graph G, int s) {
-        marked = new boolean[G.V()];
+        marked = new boolean[G.getNumVertices()];
         // Create a new edgeTo, size will be the number of vertices in the graph
-        edgeTo = new int[G.V()];
+        edgeTo = new int[G.getNumVertices()];
         this.s = s;
         dfs(G,s);
     }

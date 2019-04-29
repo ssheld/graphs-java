@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Digraph;
+import com.ssheld.AdjacencyListGraphs.Digraph;
 
 /**
  * Author: Stephen Sheldon 4/5/2019

@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Graph;
+import com.ssheld.AdjacencyListGraphs.Graph;
 
 /**
  * Author: Stephen Sheldon 4/2/2019
@@ -14,9 +14,9 @@ public class Cycle {
     private boolean hasCycle;
 
     public Cycle(Graph G) {
-        marked = new boolean[G.V()];
+        marked = new boolean[G.getNumVertices()];
 
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.getNumVertices(); i++) {
             if (!marked[i]) {
                 dfs(G, -1, i);
             }

@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Graph;
+import com.ssheld.AdjacencyListGraphs.Graph;
 
 /**
  * Author: Stephen Sheldon 4/3/2019
@@ -15,9 +15,9 @@ public class Bipartite {
     private boolean isBipartite = true;
 
     public Bipartite(Graph G) {
-        marked = new boolean[G.V()];
-        color = new boolean[G.V()];
-        for (int i = 0; i < G.V(); i++) {
+        marked = new boolean[G.getNumVertices()];
+        color = new boolean[G.getNumVertices()];
+        for (int i = 0; i < G.getNumVertices(); i++) {
             if (!marked[i]) {
                 dfs(G, i);
             }

@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Graph;
+import com.ssheld.AdjacencyListGraphs.Graph;
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -11,11 +11,11 @@ import java.util.Stack;
 public class BreadthFirstPaths {
     private boolean marked[]; // Keep track if shortest path to this vertex is known
     private int[] edgeTo;     // Last vertex on known path to this tree
-    private int s;            // Graph source
+    private int s;            // AdjacencyListGraphs source
 
     public BreadthFirstPaths(Graph G, int s) {
-        marked = new boolean[G.V()];
-        edgeTo = new int[G.V()];
+        marked = new boolean[G.getNumVertices()];
+        edgeTo = new int[G.getNumVertices()];
         this.s = s;
         bfs(G, s);
     }

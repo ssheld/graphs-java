@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Graph;
+import com.ssheld.AdjacencyListGraphs.Graph;
 
 /**
  * Author: Stephen Sheldon 3/24/2019
@@ -13,7 +13,7 @@ public class DepthFirstSearch {
 
     public DepthFirstSearch(Graph G, int s) {
         // Initialize to number of vertices in graph
-        marked = new boolean[G.V()];
+        marked = new boolean[G.getNumVertices()];
         dfs(G, s);
     }
 

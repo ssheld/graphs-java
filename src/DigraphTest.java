@@ -1,4 +1,4 @@
-import com.ssheld.Graph.Digraph;
+import com.ssheld.AdjacencyListGraphs.Digraph;
 import com.ssheld.Search.DirectedDFS;
 
 import java.io.File;

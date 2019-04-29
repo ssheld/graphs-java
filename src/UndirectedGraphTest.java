@@ -1,9 +1,19 @@
-import com.ssheld.Graph.Graph;
-import com.ssheld.Search.*;
+import com.ssheld.AdjacencyListGraphs.Graph;
+import com.ssheld.AdjacencyListGraphs.ListGraph;
+import com.ssheld.AdjacencyListGraphs.MatrixGraph;
+import com.ssheld.Search.Bipartite;
+import com.ssheld.Search.BreadthFirstPaths;
+import com.ssheld.Search.ConnectedComponents;
+import com.ssheld.Search.Cycle;
+import com.ssheld.Search.DepthFirstPaths;
+import com.ssheld.Search.DepthFirstSearch;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Author: Stephen Sheldon 3/24/2019
@@ -12,13 +22,15 @@ import java.util.*;
  * whether or not the graph is connected.
  */
 
-public class TestSearch {
+public class UndirectedGraphTest {
 
     public static void main(String[] args) {
         // Source Vertex
         int source;
         // User menu choice
         int choice;
+        // User choice to use either adj list or adj matrix
+        int graphType;
         // Number of vertices in graph
         int vCount;
         // Number of edges in graph
@@ -28,7 +40,7 @@ public class TestSearch {
         // File name specified by user to read graph data from
         String fileName;
 
-        Graph g = new Graph(1);
+        Graph g = new ListGraph(0);
 
         Scanner scan = new Scanner(System.in);
         Scanner fin;
@@ -37,23 +49,45 @@ public class TestSearch {
         System.out.println("Please specify the name of the file you wish to generate a graph from");
         fileName = scan.next();
 
+        System.out.println("Would you like to create a graph using an");
+        System.out.println("1. Adjacency List");
+        System.out.println("2. Adjacency Matrix");
+        graphType = scan.nextInt();
+
         try {
             fin = new Scanner(new File(fileName));
             vCount = Integer.parseInt(fin.nextLine());
             eCount = Integer.parseInt(fin.nextLine());
-            g = new Graph(vCount);
-            for (int i = 0; i < eCount; i++) {
+            // User has chosen to use an adjacency list
+            if (graphType == 1) {
+                g = new ListGraph(vCount);
+                for (int i = 0; i < eCount; i++) {
+                    v = fin.nextInt();
+                    w = fin.nextInt();
+                    g.addEdge(v, w);
+                }
+            }
+            else {
+              g = new MatrixGraph(vCount);
+              for (int i = 0; i < eCount; i++) {
                 v = fin.nextInt();
                 w = fin.nextInt();
-                g.addEdge(v, w);
+                g.addEdge(v,w);
+              }
             }
+
+            System.out.println("You have the following graph:");
+            g.printGraph();
+
         } catch (FileNotFoundException e) {
             System.out.println("Sorry, the file you specified could not be found.");
         }
 
-        System.out.println("You have the following graph:");
-        g.printAdjList();
-
+        if (graphType == 2) {
+            System.out.println();
+            System.out.println("Ending program, graphs represented by adjacency matrix's are currently not supported. Sorry!");
+            System.exit(0);
+        }
 
         System.out.println("Which of the following would you like to do with the graph?");
         do {
@@ -73,12 +107,12 @@ public class TestSearch {
                 DepthFirstSearch search = new DepthFirstSearch(g, source);
                 System.out.println("Doing a depth first search...");
 
-                for (int i = 0; i < g.V(); i++) {
+                for (int i = 0; i < g.getNumVertices(); i++) {
                     if (search.marked(i))
                         System.out.printf("%d ", i);
                 }
                 System.out.println();
-                if (search.count() != g.V())
+                if (search.count() != g.getNumVertices())
                     System.out.println("NOT CONNECTED");
                 else
                     System.out.println("CONNECTED");
@@ -86,7 +120,7 @@ public class TestSearch {
             else if (choice == 2) {
                 DepthFirstPaths dfp = new DepthFirstPaths(g, 0);
 
-                for (int i = 0; i < g.V(); i++) {
+                for (int i = 0; i < g.getNumVertices(); i++) {
                     // Check and see if we have a path to vertex v
                     // and we need to check to make sure v is our source
                     if (dfp.hasPathTo(i)) {
@@ -104,7 +138,7 @@ public class TestSearch {
             }
             else if (choice == 3) {
                 BreadthFirstPaths bfp = new BreadthFirstPaths(g, 0);
-                for (int i = 0; i < g.V(); i++) {
+                for (int i = 0; i < g.getNumVertices(); i++) {
                     if (bfp.hasPathTo(i)) {
                         System.out.printf("0 to %d: ", i);
                         // If we do let's iterate through it
@@ -129,7 +163,7 @@ public class TestSearch {
                 for (int i = 0; i < n; i++) {
                     components[i] = new PriorityQueue<>();
                 }
-                for (int i = 0; i < g.V(); i++) {
+                for (int i = 0; i < g.getNumVertices(); i++) {
                     components[cc.id(i)].add(i);
                 }
 

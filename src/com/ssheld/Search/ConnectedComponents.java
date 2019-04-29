@@ -1,6 +1,6 @@
 package com.ssheld.Search;
 
-import com.ssheld.Graph.Graph;
+import com.ssheld.AdjacencyListGraphs.Graph;
 
 /**
  * Author: Stephen Sheldon 4/2/2019
@@ -16,10 +16,10 @@ public class ConnectedComponents {
     private int count;
 
     public ConnectedComponents(Graph G) {
-        marked = new boolean[G.V()];
-        id = new int[G.V()];
+        marked = new boolean[G.getNumVertices()];
+        id = new int[G.getNumVertices()];
         // Loop through all vertices
-        for (int i = 0; i < G.V(); i++) {
+        for (int i = 0; i < G.getNumVertices(); i++) {
             // If vertex i isn't marked then let's recursively call DFS on it
             // to mark all connected components as visited.
             if (!marked[i]) {
