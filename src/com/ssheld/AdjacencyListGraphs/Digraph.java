@@ -11,36 +11,36 @@ import java.util.LinkedList;
 
 public class Digraph {
     // Num vertices in graph
-    private int V;
+    private int numVertices;
     // Num edges in graph
-    private int E;
+    private int numEdges;
     // Adjacency list
     private LinkedList<Integer>[] adj;
 
-    public Digraph(int V) {
-        this.V = V;
-        this.E = 0;
-        adj = new LinkedList[V];
+    public Digraph(int numVertices) {
+        this.numVertices = numVertices;
+        this.numEdges = 0;
+        adj = new LinkedList[numVertices];
         // Initialize all vertices to new linked lists
-        for (int v = 0; v < V; v++) {
+        for (int v = 0; v < numVertices; v++) {
             adj[v] = new LinkedList<>();
         }
     }
 
     // Return the number of edges in the graph
-    public int E() {
-        return E;
+    public int getNumEdges() {
+        return numEdges;
     }
 
     // Return the number of vertices in the graph
-    public int V() {
-        return V;
+    public int getNumVertices() {
+        return numVertices;
     }
 
     // Add an edge to the digraph
     public void addEdge(int v, int w) {
         adj[v].addFirst(w);
-        E++;
+        numEdges++;
     }
 
     // Return an iterable over all vertices adj to vertex v
@@ -52,8 +52,8 @@ public class Digraph {
     // Needed in digraph processing because it will allow user to find the edges that
     // point to each vertex
     public Digraph reverse() {
-        Digraph R = new Digraph(V);
-        for (int v = 0; v < V; v++) {
+        Digraph R = new Digraph(numVertices);
+        for (int v = 0; v < numVertices; v++) {
             for (int w : adj(v)) {
                 R.addEdge(w, v);
             }

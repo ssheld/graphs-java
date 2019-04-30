@@ -1,4 +1,5 @@
 import com.ssheld.AdjacencyListGraphs.Digraph;
+import com.ssheld.Search.DirectedCycle;
 import com.ssheld.Search.DirectedDFS;
 
 import java.io.File;
@@ -48,6 +49,7 @@ public class DigraphTest {
             System.out.println("1. Print the graph as scanner in");
             System.out.println("2. Reverse the Digraph and print the result");
             System.out.println("3. Check if there is a directed path from source s to a given target vertex v");
+            System.out.println("4. Check if there exists a directed cycle in the graph");
             System.out.println("0. Quit the program.");
 
             choice = scan.nextInt();
@@ -55,7 +57,7 @@ public class DigraphTest {
             System.out.println();
 
             if (choice == 1) {
-                for (int i = 0; i < G.V(); i++) {
+                for (int i = 0; i < G.getNumVertices(); i++) {
                     System.out.printf("%d :", i);
                     for (int j : G.adj(i)) {
                         System.out.printf(" %d ", j);
@@ -65,7 +67,7 @@ public class DigraphTest {
             }
             else if (choice == 2) {
                 Digraph reversedGraph = G.reverse();
-                for (int i = 0; i < reversedGraph.V(); i++) {
+                for (int i = 0; i < reversedGraph.getNumVertices(); i++) {
                     System.out.printf("%d :", i);
                     for (int j : reversedGraph.adj(i)) {
                         System.out.printf(" %d ", j);
@@ -85,6 +87,15 @@ public class DigraphTest {
                 }
                 else {
                     System.out.printf("No you can not reach %d from %d%n", target, source);
+                }
+            }
+            else if (choice == 4) {
+                DirectedCycle directedCycle = new DirectedCycle(G);
+                if (directedCycle.hasCycle()) {
+                    System.out.println("The digraph does have a cycle.");
+                }
+                else {
+                    System.out.println("The digraph DOES NOT have a cycle.");
                 }
             }
 
