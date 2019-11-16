@@ -9,17 +9,13 @@ import java.util.LinkedList;
  *
  */
 
-public class Digraph {
-    // Num vertices in graph
-    private int numVertices;
-    // Num edges in graph
-    private int numEdges;
+public class Digraph extends Graph {
+
     // Adjacency list
     private LinkedList<Integer>[] adj;
 
     public Digraph(int numVertices) {
-        this.numVertices = numVertices;
-        this.numEdges = 0;
+        super(numVertices, 0);
         adj = new LinkedList[numVertices];
         // Initialize all vertices to new linked lists
         for (int v = 0; v < numVertices; v++) {
@@ -27,23 +23,15 @@ public class Digraph {
         }
     }
 
-    // Return the number of edges in the graph
-    public int getNumEdges() {
-        return numEdges;
-    }
-
-    // Return the number of vertices in the graph
-    public int getNumVertices() {
-        return numVertices;
-    }
-
     // Add an edge to the digraph
+    @Override
     public void addEdge(int v, int w) {
         adj[v].addFirst(w);
         numEdges++;
     }
 
     // Return an iterable over all vertices adj to vertex v
+    @Override
     public Iterable<Integer> adj(int v) {
         return adj[v];
     }
