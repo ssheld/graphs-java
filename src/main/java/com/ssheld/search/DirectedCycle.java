@@ -1,6 +1,6 @@
-package com.ssheld.Search;
+package com.ssheld.search;
 
-import com.ssheld.AdjacencyListGraphs.Digraph;
+import com.ssheld.adjacencylistgraphs.Digraph;
 
 import java.util.Stack;
 

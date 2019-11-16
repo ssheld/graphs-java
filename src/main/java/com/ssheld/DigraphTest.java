@@ -1,8 +1,8 @@
 package com.ssheld;
 
-import com.ssheld.AdjacencyListGraphs.Digraph;
-import com.ssheld.Search.DirectedCycle;
-import com.ssheld.Search.DirectedDFS;
+import com.ssheld.adjacencylistgraphs.Digraph;
+import com.ssheld.search.DirectedCycle;
+import com.ssheld.search.DirectedDFS;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,14 +1,14 @@
 package com.ssheld;
 
-import com.ssheld.AdjacencyListGraphs.Graph;
-import com.ssheld.AdjacencyListGraphs.ListGraph;
-import com.ssheld.AdjacencyListGraphs.MatrixGraph;
-import com.ssheld.Search.Bipartite;
-import com.ssheld.Search.BreadthFirstPaths;
-import com.ssheld.Search.ConnectedComponents;
-import com.ssheld.Search.Cycle;
-import com.ssheld.Search.DepthFirstPaths;
-import com.ssheld.Search.DepthFirstSearch;
+import com.ssheld.adjacencylistgraphs.Graph;
+import com.ssheld.adjacencylistgraphs.ListGraph;
+import com.ssheld.adjacencylistgraphs.MatrixGraph;
+import com.ssheld.search.Bipartite;
+import com.ssheld.search.BreadthFirstPaths;
+import com.ssheld.search.ConnectedComponents;
+import com.ssheld.search.Cycle;
+import com.ssheld.search.DepthFirstPaths;
+import com.ssheld.search.DepthFirstSearch;
 
 import java.io.File;
 import java.io.FileNotFoundException;

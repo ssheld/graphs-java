@@ -1,6 +1,6 @@
-package com.ssheld.Search;
+package com.ssheld.search;
 
-import com.ssheld.AdjacencyListGraphs.Graph;
+import com.ssheld.adjacencylistgraphs.Graph;
 
 /**
  * Author: Stephen Sheldon 4/3/2019

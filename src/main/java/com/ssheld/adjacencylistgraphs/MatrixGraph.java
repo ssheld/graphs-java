@@ -1,4 +1,4 @@
-package com.ssheld.AdjacencyListGraphs;
+package com.ssheld.adjacencylistgraphs;
 
 /**
  * Author: Stephen Sheldon 4/29/2019

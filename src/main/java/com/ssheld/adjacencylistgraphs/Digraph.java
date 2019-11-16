@@ -1,4 +1,4 @@
-package com.ssheld.AdjacencyListGraphs;
+package com.ssheld.adjacencylistgraphs;
 
 import java.util.LinkedList;
 
