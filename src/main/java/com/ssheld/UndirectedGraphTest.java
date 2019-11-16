@@ -1,3 +1,5 @@
+package com.ssheld;
+
 import com.ssheld.AdjacencyListGraphs.Graph;
 import com.ssheld.AdjacencyListGraphs.ListGraph;
 import com.ssheld.AdjacencyListGraphs.MatrixGraph;

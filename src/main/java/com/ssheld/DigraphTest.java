@@ -1,3 +1,5 @@
+package com.ssheld;
+
 import com.ssheld.AdjacencyListGraphs.Digraph;
 import com.ssheld.Search.DirectedCycle;
 import com.ssheld.Search.DirectedDFS;
