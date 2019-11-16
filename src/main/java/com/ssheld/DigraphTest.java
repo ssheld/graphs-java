@@ -3,6 +3,7 @@ package com.ssheld;
 import com.ssheld.adjacencylistgraphs.Digraph;
 import com.ssheld.search.DirectedCycle;
 import com.ssheld.search.DirectedDFS;
+import com.ssheld.utils.GraphUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,25 +26,26 @@ public class DigraphTest {
         int vCount, eCount, v, w, source, target;
         Digraph G = new Digraph(1);
 
-        System.out.println("Please specify the name of the file you wish to generate a graph from");
-        fileName = scan.next();
 
-        try {
-            fin = new Scanner(new File(fileName));
-            vCount = Integer.parseInt(fin.nextLine());
-            eCount = Integer.parseInt(fin.nextLine());
-            G = new Digraph(vCount);
-            for (int i = 0; i < eCount; i++) {
-                v = fin.nextInt();
-                w = fin.nextInt();
-                G.addEdge(v, w);
+        do {
+            System.out.println("Please specify the name of the file you wish to generate a graph from");
+            fileName = scan.next();
+            try {
+                fin = new Scanner(new File(fileName));
+                vCount = Integer.parseInt(fin.nextLine());
+                eCount = Integer.parseInt(fin.nextLine());
+                G = new Digraph(vCount);
+                for (int i = 0; i < eCount; i++) {
+                    v = fin.nextInt();
+                    w = fin.nextInt();
+                    G.addEdge(v, w);
+                }
+                break;
+            } catch (FileNotFoundException e) {
+                System.out.println("The file you entered could not be found!");
             }
 
-
-
-        } catch (FileNotFoundException e) {
-            System.out.println("The file you entered could not be found!");
-        }
+        } while (true);
 
         int choice;
         System.out.println("Please enter your choice.");
@@ -52,6 +54,7 @@ public class DigraphTest {
             System.out.println("2. Reverse the Digraph and print the result");
             System.out.println("3. Check if there is a directed path from source s to a given target vertex v");
             System.out.println("4. Check if there exists a directed cycle in the graph");
+            System.out.println("5. Compute degree of a specific vertex");
             System.out.println("0. Quit the program.");
 
             choice = scan.nextInt();
@@ -99,6 +102,11 @@ public class DigraphTest {
                 else {
                     System.out.println("The digraph DOES NOT have a cycle.");
                 }
+            }
+            else if (choice == 5) {
+                System.out.println("Please enter the integer number of the vertex you wish to calculate the degree of");
+                int vertex = scan.nextInt();
+                System.out.println("The degree of vertex " + vertex + " is " + GraphUtils.degree(G, vertex));
             }
 
             System.out.println();
