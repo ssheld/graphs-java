@@ -1,5 +1,6 @@
 import com.ssheld.graphs.Graph;
 import com.ssheld.graphs.ListGraph;
+import com.ssheld.search.DepthFirstPaths;
 import com.ssheld.search.DepthFirstSearch;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -105,4 +106,37 @@ public class UndirectedTests {
         // Check if graph is connected
         assertEquals(true, dfs.count() == myConnectedListGraph.getNumVertices());
     }
+
+    @Test
+    void findDepthFirstPathConnected() {
+        System.out.println("Depth first paths test, connected vertices");
+        DepthFirstPaths dfp = new DepthFirstPaths(myUnconnectedListGraph, 0);
+        Iterable<Integer> paths = dfp.pathTo(3);
+        assertEquals(true, paths != null);
+        for (Integer v : paths) {
+            System.out.printf("%d-", v);
+        }
+
+        System.out.printf("\n");
+    }
+
+    @Test
+    void findDepthFirstPathUnconnected() {
+        System.out.println("Depth first paths test, unconnected vertices");
+        DepthFirstPaths dfp = new DepthFirstPaths(myUnconnectedListGraph, 0);
+        Iterable<Integer> paths = dfp.pathTo(8);
+        assertEquals(false, paths != null);
+        if (paths == null) {
+            System.out.println("Paths is NULL");
+            return;
+        }
+
+        for (Integer v : paths) {
+            System.out.printf("%d-", v);
+        }
+
+        System.out.printf("\n");
+    }
+
+
 }
