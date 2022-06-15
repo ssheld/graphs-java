@@ -1,5 +1,6 @@
 import com.ssheld.graphs.ListGraph;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,12 +39,14 @@ public class UndirectedTests {
                 myListGraph.addEdge(v, w);
             }
 
-
-                System.out.println("You have the following graph:");
-                myListGraph.printGraph();
-
-            } catch(FileNotFoundException e){
-                System.out.println("Sorry, the file you specified could not be found.");
-            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Sorry, the file you specified could not be found.");
         }
     }
+
+    @Test
+    void printListGraph() {
+        System.out.println("You have the following graph:");
+        myListGraph.printGraph();
+    }
+}
