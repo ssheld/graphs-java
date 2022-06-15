@@ -101,4 +101,4 @@ fabric.properties
 **.iml
 
 # Ignore all target dirs
-*/target
+target/
