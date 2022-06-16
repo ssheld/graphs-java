@@ -1,5 +1,6 @@
 import com.ssheld.graphs.Graph;
 import com.ssheld.graphs.ListGraph;
+import com.ssheld.search.BreadthFirstPaths;
 import com.ssheld.search.DepthFirstPaths;
 import com.ssheld.search.DepthFirstSearch;
 import org.junit.jupiter.api.BeforeEach;
@@ -110,7 +111,7 @@ public class UndirectedTests {
     @Test
     void findDepthFirstPathConnected() {
         System.out.println("Depth first paths test, connected vertices");
-        DepthFirstPaths dfp = new DepthFirstPaths(myUnconnectedListGraph, 0);
+        DepthFirstPaths dfp = new DepthFirstPaths(myConnectedListGraph, 0);
         Iterable<Integer> paths = dfp.pathTo(3);
         assertEquals(true, paths != null);
         for (Integer v : paths) {
@@ -130,6 +131,19 @@ public class UndirectedTests {
             System.out.println("Paths is NULL");
             return;
         }
+
+        for (Integer v : paths) {
+            System.out.printf("%d-", v);
+        }
+
+        System.out.printf("\n");
+    }
+
+    @Test
+    void findBreadthFirstPathConnected() {
+        System.out.println("Breadth first paths test, connected vertices");
+        BreadthFirstPaths bfp = new BreadthFirstPaths(myConnectedListGraph, 0);
+        Iterable<Integer> paths = bfp.pathTo(3);
 
         for (Integer v : paths) {
             System.out.printf("%d-", v);
